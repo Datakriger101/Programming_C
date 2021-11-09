@@ -1,8 +1,8 @@
 /**
- *  Skjelett/grunnlag for oblig nr 3 i GrProg, høsten 2021.
+ *  Skjelett/grunnlag for oblig nr 3 i GrProg, hÃ¸sten 2021.
  *
  * @file    Oblig3.tpl
- * @author  Malin Foss, William Eide Seiner & FrodeH
+ * @author  Eskil Refsgaard, NTNU GjÃ¸vik
  */
 
 
@@ -11,14 +11,14 @@
 #include <ctype.h>          //  toupper
 
 
-#define  ANTRUTER    9      ///<  Antall ruter på brettet
+#define  ANTRUTER    9      ///<  Antall ruter pÃ¥ brettet
 const int STRLEN  = 80;     ///<  Tekstlengde
 
-void nullstillBrett();              //Funksjon for å nullstille brettet
+void nullstillBrett();              //Funksjon for Ã¥ nullstille brettet
 bool sjekkBrett(const int pos);     //Sjekker om posisjon er opptatt
 bool sjekkVinner();                 //Sjekker om en spiller har vunnet
 void skrivBrett();                  //Skriver ut brettet, med innskrevne bokstav
-int  spillSpillet();                //Bruker ^^ for å spillet
+int  spillSpillet();                //Bruker ^^ for Ã¥ spillet
 //char svarKommando();
 
 char gBrett[ANTRUTER];     ///<  Spillebrettet.
@@ -29,32 +29,32 @@ char gBrett[ANTRUTER];     ///<  Spillebrettet.
 int main() {
     char spillere[2][STRLEN];          //  Begge spillernes navn.
 
-    char nyttSpill;                  // Kjøre programmet/spillet EN gang til.
+    char nyttSpill;                  // KjÃ¸re programmet/spillet EN gang til.
 	int  vinner;                    // Evt. spillernummer som har vunnet.
 	char spill_tegn;               // Startet spillet eller avslutter
 
 	printf("Vil du spille en runde? (J/n): "); scanf("%c", &spill_tegn);
     getchar; spill_tegn = toupper(spill_tegn);
 
-    if(spill_tegn == 'J') //Spør om bruker ønsker å starte spiller :)
+    if(spill_tegn == 'J') //SpÃ¸r om bruker Ã¸nsker Ã¥ starte spiller :)
         printf("Lykke til mine snupper ;)\n\n");
     else{
         printf("See u later <3"); exit(0);} getchar();
 
 do  {
 
-    nullstillBrett();   //Nullstiller og gjør klar for ny runde
+    nullstillBrett();   //Nullstiller og gjÃ¸r klar for ny runde
 
     skrivBrett();       //Skirver ut eksistrende brett
 
     //Skriver inn spillere
-    printf("\n\nNavn på spiller 1:  "); gets(spillere[0]);
-    printf("Navn på spiller 2:  ");     gets(spillere[1]);
+    printf("\n\nNavn pÃ¥ spiller 1:  "); gets(spillere[0]);
+    printf("Navn pÃ¥ spiller 2:  ");     gets(spillere[1]);
     printf("\n");
 
     //Tester spillere
     printf("Spiller. 1: %s\nSpiller. 2: %s\n\n", spillere[0], spillere[1]);
-    vinner = spillSpillet(); //Bruker spillspillet() for å avgjøre vinner
+    vinner = spillSpillet(); //Bruker spillspillet() for Ã¥ avgjÃ¸re vinner
 
 
 
@@ -64,7 +64,7 @@ do  {
             //  'vinner' == 0:
     else    printf("\nIngen vinner denne gangen dessverre.\n\n");
 
-    //Spør bruker om de vil spille en ny runde
+    //SpÃ¸r bruker om de vil spille en ny runde
     printf("\n\nEn ny runde (N/j):  ");
     scanf(" %c", &nyttSpill);  nyttSpill = toupper(nyttSpill);
     getchar();
@@ -89,8 +89,8 @@ gBrett[i] = ' ';
 /**
  *  Finner ut om et trekk er gyldig eller ei.
  *
- *  @param    n - Ruten (0-8) det forsøkes å sette en brikke i
- *  @return	  Om det var mulig å sette brikken der (true) eller ei (false)
+ *  @param    n - Ruten (0-8) det forsÃ¸kes Ã¥ sette en brikke i
+ *  @return	  Om det var mulig Ã¥ sette brikken der (true) eller ei (false)
  */
 bool sjekkBrett(const int pos) { // Sjekker om pos er gyldig
 
@@ -101,9 +101,9 @@ bool sjekkBrett(const int pos) { // Sjekker om pos er gyldig
 }
 
 /**
- *  Sjekker om noen har tre på rad i en eller annen retning.
+ *  Sjekker om noen har tre pÃ¥ rad i en eller annen retning.
  *
- *  @return   Om noen har tre på rad (true) eller ei (false) i noen retning
+ *  @return   Om noen har tre pÃ¥ rad (true) eller ei (false) i noen retning
  */
 bool sjekkVinner() {
 int i;
@@ -121,12 +121,12 @@ if(tegn != ' ' && gBrett[i+3] == tegn && gBrett[i+6] == tegn){
     return true;}
 }
 
-//Sjekker på tvers 0-4-8
+//Sjekker pÃ¥ tvers 0-4-8
 if(gBrett[0] != ' ' && gBrett[4] == gBrett[0] && gBrett[8] == gBrett[0]){
     return true;
 }
 
-//Sjekker på tvers 2-4-6
+//Sjekker pÃ¥ tvers 2-4-6
 if(gBrett[2] != ' ' && gBrett[4] == gBrett[2] && gBrett[6] == gBrett[2]){
     return true;
 }
@@ -161,7 +161,7 @@ printf("\n\n"
 int spillSpillet() {
 bool sjekk, vinn = false;
 int i, runder = 0;  //Teller antall runder spillt
-int player = 0,    /*For å avgjøre spiller*/ pos; /*Avgjøre posisjon*/
+int player = 0,    /*For Ã¥ avgjÃ¸re spiller*/ pos; /*AvgjÃ¸re posisjon*/
 
     do{
         do{
@@ -177,7 +177,7 @@ int player = 0,    /*For å avgjøre spiller*/ pos; /*Avgjøre posisjon*/
         if(sjekk == true){
             runder++;                   //Legger til runder spillt
             player = player % 2;
-            if(player % 2 == 0){        //Avgjør spiller
+            if(player % 2 == 0){        //AvgjÃ¸r spiller
                 gBrett[pos-1] = 'X';    //Spiller 1
             }else{
                 gBrett[pos-1] = 'O';}   //Spiller 2
@@ -185,13 +185,13 @@ int player = 0,    /*For å avgjøre spiller*/ pos; /*Avgjøre posisjon*/
         }else
             printf("Plassen er opptatt!");
 
-            skrivBrett(); //Skriver ut nåværende brett
+            skrivBrett(); //Skriver ut nÃ¥vÃ¦rende brett
 
             if(sjekkVinner()){
                 if(player == 1){//Spiller 1 vant
-                    return 1;   //Spiller 1 har 3 på rad
+                    return 1;   //Spiller 1 har 3 pÃ¥ rad
                 }else{          //Spiller 2 vant ikke
-                    return 2;   //Spiller 2 har 3 på rad
+                    return 2;   //Spiller 2 har 3 pÃ¥ rad
                 }
             }else{}
 
